@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<section class="hero_image">
+		<div class="hero_wrapper">
+			<h1>THE FOOD YOU LOVE</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur obcaecati labore culpa rem adipisci magnam, unde nostrum provident aut nisi.</p>
+			<form class="form_code"> 
+
+				<input class="post_code" type="text" placeholder="Find your food here">
+				<button type="submit">Find Food</button>
+			</form>
+		</div>
+	</section>
+
+	<section class="product">
+		<div style=" display: none; margin: auto; justify-content:center; text-align:center; color:red">
+			<h1>Item not Found</h1>
+		</div>
+		<div id="card">
+
+		</div>
+		<!-- <div class="product__list__item">
+			<img class="img-responsive" src="food1.jpg" alt="">
+			<h2 class="product_heading">
+				Pizza
+			</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit quas id cupiditate harum quidem magni recusandae dolor qui magnam nihil. Ab facilis fugiat fugit iusto possimus, corrupti recusandae porro nam.</p>
+		</div>
+
+		<div class="product__list__item">
+			<img class="img-responsive" src="food2.jpg" alt="">
+			<h2 class="product_heading">
+				Burger
+			</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit quas id cupiditate harum quidem magni recusandae dolor qui magnam nihil. Ab facilis fugiat fugit iusto possimus, corrupti recusandae porro nam.</p>
+		</div>
+		<div class="product__list__item">
+			<img class="img-responsive" src="food3.jpg" alt="">
+			<h2 class="product_heading">
+				Pasta
+			</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit quas id cupiditate harum quidem magni recusandae dolor qui magnam nihil. Ab facilis fugiat fugit iusto possimus, corrupti recusandae porro nam.</p>
+		</div> -->
+
+	</section>
+
+	<script>
+		let filterArray = [];
+		let serviceArray = [
+		{
+		"id" : 1,
+			"name" : "Pizza",
+			"src" : "food1.jpg",
+			"description" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit quas id cupiditate harum quidem magni recusandae dolor qui magnam nihil. Ab facilis fugiat fugit iusto possimus, corrupti recusandae porro nam.",
+		},
+		{
+			"id" : 2,
+			"name" : "Burger",
+			"src" : "food2.jpg",
+			"description" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit quas id cupiditate harum quidem magni recusandae dolor qui magnam nihil. Ab facilis fugiat fugit iusto possimus, corrupti recusandae porro nam.",
+		},
+		{
+			"id" : 3,
+			"name" : "Pasta",
+			"src" : "food3.jpg",
+			"description" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit quas id cupiditate harum quidem magni recusandae dolor qui magnam nihil. Ab facilis fugiat fugit iusto possimus, corrupti recusandae porro nam.",
+		}
+		];
+
+		showServices(serviceArray);
+
+
+		function showServices(currArray)
+{
+	document.getElementById("card").innerText= "";
+	for(var i=0; i<currArray.length; i++)
+	{
+		document.getElementById("card").innerHTML +=
+		`<div class="product__list__item">
+			<img class="img-responsive" src=${currArray.src} alt="">
+			<h2 class="product_heading">
+				${currArray.name}
+			</h2>
+			<p>${currArray.description}</p>
+		</div>`
+	}
+}
+
+	</script>
+</body>
+</html>
