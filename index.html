@@ -13,14 +13,14 @@
 			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur obcaecati labore culpa rem adipisci magnam, unde nostrum provident aut nisi.</p>
 			<form class="form_code"> 
 
-				<input class="post_code" type="text" placeholder="Find your food here">
-				<button type="submit">Find Food</button>
+				<input class="post_code" id="myInput" type="text" placeholder="Find your food here">
+				<!-- <button type="submit">Find Food</button> -->
 			</form>
 		</div>
 	</section>
 
 	<section class="product">
-		<div style=" display: none; margin: auto; justify-content:center; text-align:center; color:red">
+		<div id= "itemNotFound" style=" display: none; margin: auto; justify-content:center; text-align:center; color:red">
 			<h1>Item not Found</h1>
 		</div>
 		<div id="card">
@@ -84,14 +84,50 @@
 	{
 		document.getElementById("card").innerHTML +=
 		`<div class="product__list__item">
-			<img class="img-responsive" src=${currArray.src} alt="">
+			<img class="img-responsive" src=${currArray[i].src} alt="">
 			<h2 class="product_heading">
-				${currArray.name}
+				${currArray[i].name}
 			</h2>
-			<p>${currArray.description}</p>
+			<p>${currArray[i].description}</p>
 		</div>`
 	}
 }
+
+//  live searching using key inputs
+
+document.getElementById("myInput").addEventListener("keyup", function(){
+	let text = document.getElementById("myInput").value;
+	console.log(text);
+
+	filterArray = serviceArray.filter(function(item){
+		lowerText = item.name.toLowerCase();
+		upperText = item.name.toUpperCase();
+		console.log("Value of item : "+item);
+		if(lowerText.includes(text) || upperText.includes(text)){
+			return item.name;
+		}
+	});
+
+	console.log(filterArray);
+
+	if(this.value=="")
+	{
+		showServices(serviceArray);
+	}
+	else
+	{
+		if(filterArray=="")
+		{
+			document.getElementById("itemNotFound").style.display="block";
+			document.getElementById("card").innerHTML= "";
+		}
+		else{
+			showServices(filterArray);
+			document.getElementById("itemNotFound").style.display = "none";
+		}
+	}
+
+})
 
 	</script>
 </body>
